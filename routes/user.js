@@ -83,8 +83,9 @@ router
     })
 
 //logout
-router.get("/logout", authenticateUser, (req, res) => {
+router.get("/logout", (req, res) => {
     req.session.user = null;
+    res.clearCookie("jwt");
     res.redirect("/");
 });
 
